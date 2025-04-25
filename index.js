@@ -31,17 +31,22 @@ scheduledDelivery(days);
 
 
 //Create a program that loops through an array of book statuses and prints "Ready to lend" if the status is "available" or "Checked out" if the status is "borrowed".
-function bookStatuses(status) {
-    for (let i = 0; i < status.length; i++) {
-        if (status[i] > 0) {
-            console.log("Ready to lend");
+function bookStatuses(statuses) {
+    statuses.forEach(status => {
+        switch (status) {
+            case "available":
+                console.log("Ready to lend");
+                break;
+            case "borrowed":
+                console.log("Checked out");
+                break;
+            default:
+                console.log("Status unknown");
+                break;
         }
-        else {
-            console.log("Checked out");
-        }
-    }
+    })
 }
-const statuses = [20, 0, 10, 2]
+const statuses = ["available","borrowed","not available"]
 bookStatuses(statuses);
 
 
@@ -65,10 +70,10 @@ checkCustomerAge(age)
 function liveCountdown() {
     let live = 5;
     while (live > 0) {
-        live--;
         console.log(`You have ${live} lives left`)
-        
+        live--;
     }
+    console.log("Game over");
 }
 liveCountdown()
 
@@ -78,12 +83,12 @@ liveCountdown()
 
 //Using a do...while loop, write a program that loops through an array of user feedback and prints each comment until the array is empty.
 function userFeedback(feedback) {
+    let i = 0;
     do {
-        const comment = feedback.shift();
-        if (comment) {
-            console.log(comment);
-        }
-    } while (feedback.length > 0);
+        console.log(feedback[i]);
+        i++;
+    }
+    while (i < feedback.length);
 }
 const comment = ["Good product", "Bad", "Can be improved", "Great", "Interesting"]
 userFeedback(comment)
@@ -125,17 +130,18 @@ function ticketAddress(priorities) {
         }
     })
 }
-const priorityList = ["low","medium","high"];
+const priorityList = ["low", "medium", "high", "very low"];
 ticketAddress(priorityList);
 
 
 //Create a while loop that simulates a quiz countdown from 10 seconds, printing each number until it reaches 0.
 function quiz() {
-    let count = 11;
+    let count = 10;
     while (count > 0) {
-        count--;
         console.log(`${count}`)
+        count--;
     }
+    console.log("Time up")
 }
 quiz()
 
